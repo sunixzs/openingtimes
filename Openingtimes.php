@@ -66,24 +66,6 @@ abstract class Openingtimes
     );
 
     /**
-     * @param string $key
-     * @param string $value
-     * 
-     * @return self
-     * 
-     * @throws \Exception
-     */
-    public function setLanguage($key, $value) {
-        if (!isset($this->language[$key])) {
-            throw new \Exception("Could not find a key " . $key . " in language configuration!");
-        }
-
-        $this->language[$key] = $value;
-
-        return $this;
-    }
-
-    /**
      * Parsed configuration from file.
      *
      * @var array
@@ -102,13 +84,6 @@ abstract class Openingtimes
         "tooltip" => "",
         "future" => []
     ];
-
-    /**
-     * @return array
-     */
-    public function getConfiguration() {
-        return $this->configuration;
-    }
 
     /**
      * @param string $configurationFile
