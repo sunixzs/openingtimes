@@ -9,6 +9,15 @@ abstract class Openingtimes
     protected $configurationFile = __DIR__ . "/Data/Openingtimes.txt";
 
     /**
+     * Language patterns which will be parsed through sprintf().
+     * 
+     * [...]_singletime means, that only one time is defined: "opened today until {time}"
+     * [...]_doubletime means, there are two times to mark from/to: "opened today from {start} to {end}
+     * [...]_string means, there is no time but a string: "today {string}"
+     * 
+     * [...]_oneTime_[...] means, that there is only one value for the day: "opened today from 09:00 to 19:00 o`clock" 
+     * [...]_twoTimes_[...] means, that there are two values - p.e. for AM and PM: "opened today from 09:00 to 12:00 and from 13:00 to 18:00 o`clock" 
+     * 
      * @var array
      */
     protected $language = array(
@@ -23,7 +32,7 @@ abstract class Openingtimes
         "today_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "today_twoTimes_partTwo_string" => ' und %1$s',
 
-        // weekdays
+        // weekday-labels
         "monday" => "Montag",
         "tuesday" => "Dienstag",
         "wednesday" => "Mittwoch",
@@ -198,19 +207,19 @@ abstract class Openingtimes
 
         foreach ($parts as $num => $part) {
             if (preg_match("/^([0-9]|[0-1][0-9]|2[0-3]):([0-5][0-9])$/", $part)) {
-                $retArr[ $num ] = array(
+                $retArr[$num] = array(
                     "type" => "singletime",
                     "value" => $part
                 );
             } elseif (preg_match("/^([0-9]|[0-1][0-9]|2[0-3]):([0-5][0-9])-([0-9]|[0-1][0-9]|2[0-3]):([0-5][0-9])$/", $part)) {
                 $timeParts = explode("-", $part);
-                $retArr[ $num ] = [
+                $retArr[$num] = [
                     "type" => "doubletime",
-                    "value1" => $timeParts[ 0 ],
-                    "value2" => $timeParts[ 1 ]
+                    "value1" => $timeParts[0],
+                    "value2" => $timeParts[1]
                 ];
             } elseif ($part) {
-                $retArr[ $num ] = [
+                $retArr[$num] = [
                     "type" => "string",
                     "value" => $part
                 ];
