@@ -50,7 +50,18 @@ abstract class Openingtimes
         "weekday_twoTimes_partOne_string" => '%1$s',
         "weekday_twoTimes_partTwo_singletime" => ' und <span class="openingtimes__value">%1$s Uhr</span>',
         "weekday_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
-        "weekday_twoTimes_partTwo_string" => ' und %1$s',
+        "weekday_twoTimes_partTwo_string" => ' %1$s',
+
+        // values in future entries
+        "future_oneTime_singletime" => 'bis <span class="openingtimes__value">%1$s Uhr</span>',
+        "future_oneTime_doubletime" => '<span class="openingtimes__value">%1$s–%2$s Uhr</span>',
+        "future_oneTime_string" => '%1$s',
+        "future_twoTimes_partOne_singletime" => '<span class="openingtimes__value">%1$s Uhr</span>',
+        "future_twoTimes_partOne_doubletime" => '<span class="openingtimes__value">%1$s–%2$s Uhr</span>',
+        "future_twoTimes_partOne_string" => '%1$s',
+        "future_twoTimes_partTwo_singletime" => ' und <span class="openingtimes__value">%1$s Uhr</span>',
+        "future_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
+        "future_twoTimes_partTwo_string" => ' %1$s',
     );
 
     /**

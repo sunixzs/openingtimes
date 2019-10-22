@@ -72,6 +72,27 @@
             request.send();
         })();
     </script>
+
+    <h2>OpeningtimesFuture.php</h2>
+
+    <fieldset>
+        <legend>future</legend>
+        <div id="openingtimes-future"></div>
+    </fieldset>
+    <script>
+        (function () {
+            var request = new XMLHttpRequest();
+            request.open("GET", "OpeningtimesFuture.php");
+            request.addEventListener('load', function (event) {
+                if (request.status >= 200 && request.status < 300) {
+                    document.querySelector("#openingtimes-future").innerHTML = request.responseText;
+                } else {
+                    console.warn(request.statusText, request.responseText);
+                }
+            });
+            request.send();
+        })();
+    </script>
 </body>
 
 </html>

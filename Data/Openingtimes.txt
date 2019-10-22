@@ -35,6 +35,8 @@ sunday     = geschlossen
 2019-08-15 = Wegen Urlaub bis 17.Aug. geschlossen!
 2019-08-16 = Wegen Urlaub bis 17.Aug. geschlossen!
 2019-12-24 = Geschlossen. Frohe Weihnachten!
+2020-12-24 = Geschlossen. Frohe Weihnachten!
+2021-12-24 = 09:00-12:00|- Frohe Weihnachten!
 
 
 ##################################################################
