@@ -6,7 +6,7 @@ abstract class Openingtimes
      *
      * @var string
      */
-    protected $configurationFile = "/Test/Data/Oeffnungszeiten.txt";
+    protected $configurationFile = __DIR__ . "/Data/Openingtimes.txt";
 
     /**
      * @var array
