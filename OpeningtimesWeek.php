@@ -7,42 +7,20 @@ include_once __DIR__ . "/Openingtimes.php";
 class OpeningtimesWeek extends Openingtimes
 {
     /**
-     * @var array
-     */
-    protected $weekdays = [
-        "monday",
-        "tuesday",
-        "wednesday",
-        "thursday",
-        "friday",
-        "saturday",
-        "sunday"
-    ];
-
-    /**
      * Renders the output.
      *
      * @return string
      */
     public function render()
     {
-        $html = "";
-
         $days = [];
-
-        foreach ($this->weekdays as $weekday) {
+        foreach (self::WEEKDAYS as $weekday) {
             if ($this->configuration["weekdays"][$weekday]) {
                 $days[] = $this->renderWeekday($weekday);
             }
         }
 
-        if (count($days)) {
-            $html .= '<table class="openingtimes openingtimes--week">';
-            $html .= implode("", $days);
-            $html .= '</table>';
-        }
-
-        return $html;
+        return count($days) ? '<table class="openingtimes openingtimes--week">' . implode("", $days) . '</table>' : "";
     }
 
     /**

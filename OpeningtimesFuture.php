@@ -21,19 +21,11 @@ class OpeningtimesFuture extends Openingtimes
         }
         
         $entries = [];
-
         foreach ($this->configuration["future"] as $entry) {
             $entries[] = $this->renderEntry($entry);
         }
 
-        $html = "";
-        if (count($entries)) {
-            $html .= '<table class="openingtimes openingtimes--future">';
-            $html .= implode("", $entries);
-            $html .= '</table>';
-        }
-
-        return $html;
+        return count($entries) ? '<table class="openingtimes openingtimes--future">' . implode("", $entries) . '</table>' : "";
     }
 
     /**

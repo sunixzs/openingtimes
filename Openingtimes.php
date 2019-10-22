@@ -3,6 +3,19 @@ declare(strict_types=1);
 abstract class Openingtimes
 {
     /**
+     * @var array
+     */
+    protected const WEEKDAYS = [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+    ];
+
+    /**
      * Path to textfile with definitions.
      *
      * @var string
@@ -10,18 +23,22 @@ abstract class Openingtimes
     protected $configurationFile = __DIR__ . "/Data/Openingtimes.txt";
 
     /**
-     * Language patterns which will be parsed through sprintf().
+     * Language patterns which will be parsed through sprintf() in child classes.
+     * 
+     * today_[...] is for OpeningtimesToday
+     * weekday_[...] is for OpeningtimesWeek
+     * future_[...] is for OpeningtimesFuture
+     * 
+     * [...]_oneTime_[...] means, that there is only one value for the day: "opened today from 09:00 to 19:00 o`clock" 
+     * [...]_twoTimes_[...] means, that there are two values - p.e. for AM and PM: "opened today from 09:00 to 12:00 and from 13:00 to 18:00 o`clock" 
      * 
      * [...]_singletime means, that only one time is defined: "opened today until {time}"
      * [...]_doubletime means, there are two times to mark from/to: "opened today from {start} to {end}
      * [...]_string means, there is no time but a string: "today {string}"
      * 
-     * [...]_oneTime_[...] means, that there is only one value for the day: "opened today from 09:00 to 19:00 o`clock" 
-     * [...]_twoTimes_[...] means, that there are two values - p.e. for AM and PM: "opened today from 09:00 to 12:00 and from 13:00 to 18:00 o`clock" 
-     * 
      * @var array
      */
-    protected $language = array(
+    public $language = [
         // today
         "today_oneTime_singletime" => 'Heute geöffnet bis <span class="openingtimes__value">%1$s Uhr</span>',
         "today_oneTime_doubletime" => 'Heute geöffnet <span class="value">%1$s–%2$s Uhr</span>',
@@ -63,15 +80,21 @@ abstract class Openingtimes
         "future_twoTimes_partTwo_singletime" => ' und <span class="openingtimes__value">%1$s Uhr</span>',
         "future_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "future_twoTimes_partTwo_string" => ' %1$s',
-    );
+    ];
+
+    
 
     /**
      * Parsed configuration from file.
+     * Don't modify this array!
      *
      * @var array
      */
     protected $configuration = [
-        "today" => "",
+        // the value for today
+        "today" => "", 
+
+        // each weekday
         "weekdays" => [
             "monday" => [],
             "tuesday" => [],
@@ -81,7 +104,11 @@ abstract class Openingtimes
             "saturday" => [],
             "sunday" => []
         ],
+
+        // some html from configuration file
         "tooltip" => "",
+
+        // dates in the future
         "future" => []
     ];
 
@@ -100,21 +127,23 @@ abstract class Openingtimes
     }
 
     /**
-     * Abstract method to render the output
-     *
-     * @return void
+     * Abstract method to render the output.
+     * The only method you've to define in child classes.
+     * 
+     * @see example classes
+     * @return string HTML
      */
     abstract public function render();
 
     /**
      * Parses the configuration file into an array.
      * 
-     * @return array
-     * @throws \Exception
+     * @return void
+     * @throws \Exception if configuration file not found.
      */
     public function parseConfiguration()
     {
-        if (is_file($this->configurationFile) === false) {
+        if (!is_file($this->configurationFile)) {
             throw new \Exception("Could not find file '" . $this->configurationFile . "'!");
         }
         
@@ -122,16 +151,14 @@ abstract class Openingtimes
         $lines = file($this->configurationFile);
         
         // iterate the lines and build configuration
-        
         $todayObj = new \DateTime();
         $todayObj->setTime(12, 0, 0);
         $weekday = strtolower($todayObj->format("l"));
-        $datekey = strtolower($todayObj->format("Y-m-d"));
+        $datekey = $todayObj->format("Y-m-d");
         $tooltips = [];
-        
         foreach ($lines as $line) {
             // skip empty lines and configuration lines
-            if (!trim($line) || substr(trim($line), 0, 1) == "#") {
+            if (!trim($line) || substr(trim($line), 0, 1) === "#") {
                 continue;
             }
             
@@ -140,15 +167,19 @@ abstract class Openingtimes
             $key = strtolower(trim(substr($line, 0, $equalPos)));
             $value = trim(substr($line, $equalPos + 1));
             
+            // something went wrong: skip
             if (!($key && $value)) {
                 continue;
             }
             
             if ($key === $datekey) {
+                // today from YYYY-MM-DD
                 $this->configuration["today"] = $this->determineValue($value);
             } elseif ($key === $weekday) {
+                // today from weekday
                 $this->configuration["today"] = $this->determineValue($value);
             } elseif (preg_match("/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/", $key)) {
+                // day by YYYY-MM-DD
                 $dtObj = new \DateTime($key);
                 $dtObj->setTime(12, 0, 0);
                 if ($dtObj && $dtObj > $todayObj) {
@@ -157,28 +188,22 @@ abstract class Openingtimes
                 }
             }
             
-            if (in_array($key, [
-                "monday",
-                "tuesday",
-                "wednesday",
-                "thursday",
-                "friday",
-                "saturday",
-                "sunday"
-            ])) {
+            if (in_array($key, self::WEEKDAYS)) {
+                // weekday
                 $this->configuration["weekdays"][$key] = $this->determineValue($value);
             }
 
             if ($key === "tooltip") {
+                // tooltip
                 $tooltips[] = $value;
             }
         }
         
+        // sort future by date key
         ksort($this->configuration["future"]);
         
+        // merge tooltip lines into one line
         $this->configuration["tooltip"] = implode("", $tooltips);
-        
-        return $this->configuration;
     }
     
     /**
