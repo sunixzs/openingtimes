@@ -17,7 +17,35 @@ Use one of these classes as template to create your own output.
 
 ## Configuration
 
-The configuration of opening times for each weekday, specific days and the tooltip is defined in `Data/Openingtimes.txt`. Have a look into this file to get more informations.
+The configuration of opening times for each weekday, specific days and the tooltip is defined in `Data/Openingtimes.txt`. 
+
+There are some definitions for the weekdays:
+
+```TEXT
+monday     = 09:00-19:00
+tuesday    = 09:00-19:00
+wednesday  = 10:00-12:00|13:00-20:00
+thursday   = 09:00-19:00
+friday     = 09:00-19:00
+saturday   = 14:00
+sunday     = geschlossen
+```
+
+...and some for special days:
+
+```TEXT
+2019-08-16 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-12-24 = Geschlossen. Frohe Weihnachten!
+```
+
+...and also some for special output:
+
+```TEXT
+tooltip = <strong>Winterpause</strong>
+tooltip = <br />Vom 24.12. bis 07.01. geschlossen.
+```
+
+Have a look into this file to get more informations about defining the values.
 
 ## Get it into HTML
 
