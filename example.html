@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Openingtimes</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+</head>
+
+<body>
+    <h1>Openingtimes</h1>
+
+    <h2>OpeningtimesToday.php</h2>
+
+    <fieldset>
+        <legend>today</legend>
+        <div id="openingtimes-today"></div>
+    </fieldset>
+    <script>
+        (function () {
+            var request = new XMLHttpRequest();
+            request.open("GET", "OpeningtimesToday.php");
+            request.addEventListener('load', function (event) {
+                if (request.status >= 200 && request.status < 300) {
+                    document.querySelector("#openingtimes-today").innerHTML = request.responseText;
+                } else {
+                    console.warn(request.statusText, request.responseText);
+                }
+            });
+            request.send();
+        })();
+    </script>
+
+    <h2>OpeningtimesTooltip.php</h2>
+
+    <fieldset>
+        <legend>tooltip</legend>
+        <div id="openingtimes-tooltip"></div>
+    </fieldset>
+    <script>
+        (function () {
+            var request = new XMLHttpRequest();
+            request.open("GET", "OpeningtimesTooltip.php");
+            request.addEventListener('load', function (event) {
+                if (request.status >= 200 && request.status < 300) {
+                    document.querySelector("#openingtimes-tooltip").innerHTML = request.responseText;
+                } else {
+                    console.warn(request.statusText, request.responseText);
+                }
+            });
+            request.send();
+        })();
+    </script>
+
+    <h2>OpeningtimesWeek.php</h2>
+
+    <fieldset>
+        <legend>week</legend>
+        <div id="openingtimes-week"></div>
+    </fieldset>
+    <script>
+        (function () {
+            var request = new XMLHttpRequest();
+            request.open("GET", "OpeningtimesWeek.php");
+            request.addEventListener('load', function (event) {
+                if (request.status >= 200 && request.status < 300) {
+                    document.querySelector("#openingtimes-week").innerHTML = request.responseText;
+                } else {
+                    console.warn(request.statusText, request.responseText);
+                }
+            });
+            request.send();
+        })();
+    </script>
+</body>
+
+</html>

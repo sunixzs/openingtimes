@@ -1,0 +1,22 @@
+#openingtimes {
+    flex: auto;
+    margin-left: 60px;
+
+    .today {
+        font-size: 12px;
+        margin-bottom: 30px;
+        width: 205px;
+        font-weight: 700;
+        color: #c71007;
+
+        .value {
+            white-space: nowrap;
+        }
+    }
+
+    .tooltip {
+        .label {
+            display: block;
+        }
+    }
+}

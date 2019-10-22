@@ -1,0 +1,46 @@
+# "#" ignoriert eine Zeile
+#
+# Eine Zeile folgt immer dem gleichen Muster:
+# Schlüsselbegriff = Wert(e)
+# Die Werte nach dem Gleichheitszeichen können folgende Formen annehmen:
+# (1) Nur eine Uhrzeit: 9:00
+# (2) Einen Zeitraum: 9:00-18:00
+# (3) Zwei Zeiträume: 9:00-12:00|13:00-18:00
+# (4) Einen Text: leider geschlossen
+
+##################################################################
+# Reguläre Öffnungszeiten werden mit dem englischen Wochentag definiert:
+# monday, tuesday, wednesday, thursday, friday, saturday, sunday
+##################################################################
+
+monday     = 09:00-19:00
+tuesday    = 09:00-19:00
+wednesday  = 10:00-12:00|13:00-20:00
+thursday   = 09:00-19:00
+friday     = 09:00-19:00
+saturday   = 14:00
+sunday     = geschlossen
+
+
+##################################################################
+# Zusätzliche Einträge können mit dem Datum in der Form YYYY-MM-DD notiert werden.
+# Diese werden am betreffenden Tag anstatt des Wochentags ausgegeben.
+##################################################################
+
+2019-10-22 = Wegen Fortbildung geschlossen!
+2019-08-10 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-08-12 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-08-13 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-08-14 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-08-15 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-08-16 = Wegen Urlaub bis 17.Aug. geschlossen!
+2019-12-24 = Geschlossen. Frohe Weihnachten!
+
+
+##################################################################
+# Spezielle Text können mit 'tooltip' erstellt werden. 
+# Mehrere tooltip-Zeilen werden zusammen ausgegeben
+##################################################################
+
+tooltip = <strong>Winterpause</strong>
+tooltip = <br />Vom 24.12. bis 07.01. geschlossen.
