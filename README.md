@@ -2,10 +2,18 @@
 
 A small PHP-Class to parse a configuration file with opening time informations to HTML output.
 
+## Classes
+
 The main class is located in `Openingtimes.php`.
 
-In the other classes there are some usecases defined to provide an output for `...Today.php`, the whole `...Week.php` as table and for a `...Tooltip.php` to show additional informations defined in the configuration.  
-Use one of these classes as template to create your own which inherits from `Openingtimes`.
+There are some usecases defined which inherit the main class:
+
+* `OpeningtimesToday.php` to show what's on today
+* `OpeningtimesWeek.php` to show the whole week as table
+* `OpeningtimesTooltip.php` to show pure HTML
+* `OpeningtimesFuture.php` to show only dates in the future as table
+
+Use one of these classes as template to create your own output.
 
 ## Configuration
 
@@ -33,4 +41,4 @@ A simple implementation in HTML could be XHR like in `example.html`:
 </script>
 ```
 
-Maybe store the XHR in the browser session to avoid fetching the data on each pageload.
+Maybe store the XHR response in the browser session to avoid fetching the data on each pageload.
