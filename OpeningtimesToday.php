@@ -16,7 +16,7 @@ class OpeningtimesToday extends Openingtimes
 
         switch (count($this->configuration["today"])) {
             case 1:
-                $html .= '<div class="today">';
+                $html .= '<div class="openingtimes openingtimes--today">';
                 switch ($this->configuration["today"][0]["type"]) {
                     case "singletime":
                         $html .= sprintf($this->language["today_oneTime_singletime"], $this->configuration["today"][0]["value"]);
@@ -31,7 +31,7 @@ class OpeningtimesToday extends Openingtimes
                 $html .= '</div>';
             break;
             case 2:
-                $html .= '<div class="today">';
+                $html .= '<div class="openingtimes openingtimes--today">';
                 switch ($this->configuration["today"][0]["type"]) {
                     case "singletime":
                         $html .= sprintf($this->language["today_twoTimes_partOne_singletime"], $this->configuration["today"][0]["value"]);
@@ -56,10 +56,6 @@ class OpeningtimesToday extends Openingtimes
                 }
                 $html .= '</div>';
             break;
-        }
-
-        if ($html) {
-            $html = '<i class="fa fa-clock-o"></i>' . $html;
         }
 
         return $html;

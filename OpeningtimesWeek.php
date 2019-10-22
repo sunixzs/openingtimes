@@ -36,7 +36,7 @@ class OpeningtimesWeek extends Openingtimes
         }
 
         if (count($days)) {
-            $html .= '<table>';
+            $html .= '<table class="openingtimes openingtimes--week>';
             $html .= implode("", $days);
             $html .= '</table>';
         }

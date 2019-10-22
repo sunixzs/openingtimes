@@ -12,7 +12,7 @@ class OpeningtimesTooltip extends Openingtimes
      */
     public function render()
     {
-        return $this->configuration["tooltip"] ? '<div class="tooltip">' . $this->configuration["tooltip"] . '</div>' : "";
+        return $this->configuration["tooltip"] ? '<div class="openingtimes openingtimes--tooltip">' . $this->configuration["tooltip"] . '</div>' : "";
     }
 }
 

@@ -13,14 +13,14 @@ abstract class Openingtimes
      */
     protected $language = array(
         // today
-        "today_oneTime_singletime" => 'Heute geöffnet bis <span class="value">%1$s Uhr</span>',
+        "today_oneTime_singletime" => 'Heute geöffnet bis <span class="openingtimes__value">%1$s Uhr</span>',
         "today_oneTime_doubletime" => 'Heute geöffnet <span class="value">%1$s–%2$s Uhr</span>',
         "today_oneTime_string" => 'Heute %1$s',
-        "today_twoTimes_partOne_singletime" => 'Heute geöffnet <span class="value">%1$s Uhr</span>',
-        "today_twoTimes_partOne_doubletime" => 'Heute geöffnet <span class="value">%1$s–%2$s</span>',
+        "today_twoTimes_partOne_singletime" => 'Heute geöffnet <span class="openingtimes__value">%1$s Uhr</span>',
+        "today_twoTimes_partOne_doubletime" => 'Heute geöffnet <span class="openingtimes__value">%1$s–%2$s</span>',
         "today_twoTimes_partOne_string" => 'Heute %1$s',
-        "today_twoTimes_partTwo_singletime" => ' und <span class="value">%1$s Uhr</span>',
-        "today_twoTimes_partTwo_doubletime" => ' und <span class="value">%1$s–%2$s Uhr</span>',
+        "today_twoTimes_partTwo_singletime" => ' und <span class="openingtimes__value">%1$s Uhr</span>',
+        "today_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "today_twoTimes_partTwo_string" => ' und %1$s',
 
         // weekdays
@@ -33,14 +33,14 @@ abstract class Openingtimes
         "sunday" => "Sonntag",
 
         // values in weekdays
-        "weekday_oneTime_singletime" => 'bis <span class="value">%1$s Uhr</span>',
-        "weekday_oneTime_doubletime" => '<span class="value">%1$s–%2$s Uhr</span>',
+        "weekday_oneTime_singletime" => 'bis <span class="openingtimes__value">%1$s Uhr</span>',
+        "weekday_oneTime_doubletime" => '<span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "weekday_oneTime_string" => '%1$s',
-        "weekday_twoTimes_partOne_singletime" => '<span class="value">%1$s Uhr</span>',
-        "weekday_twoTimes_partOne_doubletime" => '<span class="value">%1$s–%2$s Uhr</span>',
+        "weekday_twoTimes_partOne_singletime" => '<span class="openingtimes__value">%1$s Uhr</span>',
+        "weekday_twoTimes_partOne_doubletime" => '<span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "weekday_twoTimes_partOne_string" => '%1$s',
-        "weekday_twoTimes_partTwo_singletime" => ' und <span class="value">%1$s Uhr</span>',
-        "weekday_twoTimes_partTwo_doubletime" => ' und <span class="value">%1$s–%2$s Uhr</span>',
+        "weekday_twoTimes_partTwo_singletime" => ' und <span class="openingtimes__value">%1$s Uhr</span>',
+        "weekday_twoTimes_partTwo_doubletime" => ' und <span class="openingtimes__value">%1$s–%2$s Uhr</span>',
         "weekday_twoTimes_partTwo_string" => ' und %1$s',
     );
 
