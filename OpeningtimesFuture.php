@@ -1,5 +1,8 @@
 <?php
+declare(strict_types=1);
 header('Content-Type: text/html; charset=utf-8');
+
+// set local for strftime output in table head.
 setlocale(LC_TIME, "de_DE");
 
 include_once __DIR__ . "/Openingtimes.php";
