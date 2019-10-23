@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: white;
+    color: black;
+    font: normal 16px/1.4 sans-serif;
+}
+
+body {
+    padding: 1em;
+}
+
+h1,
+h2 {
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+hr {
+    margin: 2em 0;
+    border-style: dashed;
+    opacity: 0.1;
+}
+
+fieldset {
+    padding: 1em;
+    border: 1px dashed grey;
+}
+
+legend {
+    padding: 0.25em 0.5em;
+    border: 1px dashed grey;
+}
+
+.openingtimes--today {
+    display: inline-block;
+    padding: 0.5em;
+    background-color: black;
+    color: white;
+    border-radius: 0.2em;
+}
+
+.openingtimes--week {
+    border-spacing: 0;
+}
+
+.openingtimes--week th,
+.openingtimes--week td {
+    text-align: left;
+    vertical-align: top;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.openingtimes--week td {
+    padding-left: 0.5em;
+}
+
+.openingtimes--week tr th,
+.openingtimes--week tr td {
+    border-top: 1px dashed grey;
+}
+
+.openingtimes--week tr:first-child th,
+.openingtimes--week tr:first-child td {
+    border-top: none;
+}
+
+.openingtimes--tooltip {
+    display: inline-block;
+    padding: 0.5em;
+    background-color: red;
+    color: white;
+    border-radius: 0.2em;
+    -webkit-box-shadow: 0.25em 0.25em 1em rgba(0, 0, 0, 0.3);
+            box-shadow: 0.25em 0.25em 1em rgba(0, 0, 0, 0.3);
+}
+
+.openingtimes--future {
+    border-spacing: 0;
+}
+
+.openingtimes--future th,
+.openingtimes--future td {
+    text-align: left;
+    vertical-align: top;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.openingtimes--future td {
+    padding-left: 0.5em;
+}
+
+.openingtimes__value {
+    font-style: italic;
+}
