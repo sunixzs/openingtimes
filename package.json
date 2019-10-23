@@ -1,8 +1,16 @@
 {
   "name": "openingtimes",
+  "description": "A small PHP-Class to parse a configuration file with opening time informations to HTML output.",
   "version": "1.0.0",
   "main": "gulpfile.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunixzs/openingtimes"
+  },
+  "scripts": {
+    "build_css": "gulp scss"
+  },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
     "gulp": "^4.0.2",
